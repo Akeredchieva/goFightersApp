@@ -27,10 +27,19 @@ public class GameEngine {
                     "Player " + attackingHero.getClass().getSimpleName() + " have: " +  String.format("%.2f",attackingHero.getHealthPoints()) + " health points.\n");
             attack(defencingHero,attackingHero);
         } else {
+            if (defencingHero.getHealthPoints() > 0 ) {
+                System.out.println("The winner is : " + defencingHero.getClass().getSimpleName());
+            } else {
+                System.out.println("The winner is : " + attackingHero.getClass().getSimpleName());
+            }
             System.out.println("The game is end.");
         }
     }
 
+    /**
+     * Method for the starting of the game where the two players pick what type of hero they choose.
+     * @throws IOException because the input value.
+     */
     public void start() throws IOException {
         System.out.println("Choose the player one:\n(Please press one of the numbers to choose the type of the player)\n" +
                             "1. Warrior\n2. Assassin\n3.Knight\n4. Monk");

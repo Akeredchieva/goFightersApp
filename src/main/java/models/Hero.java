@@ -70,7 +70,12 @@ public abstract class Hero {
      * @return The health points of the player in double.
      */
     public double getHealthPoints() {
-        return healthPoints;
+        if (healthPoints <= 0) {
+            setHealthPoints(0);
+            return healthPoints;
+        } else {
+            return healthPoints;
+        }
     }
 
     /**
