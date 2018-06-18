@@ -27,13 +27,8 @@ public class Monk extends Hero {
         double remainingPoints;
         if (this.getCounterForDefence() % NUMBER_OF_PERCENTAGE_DAMAGE == 0) {
             remainingPoints = damageMade - percentageOfAttacking();
-            if (remainingPoints > 0) {
-                double remainingPointsHealth = this.getHealthPoints() - remainingPoints;
-                this.setHealthPoints(remainingPointsHealth);
-            }
-        } else {
-            remainingPoints = this.getHealthPoints() - damageMade;
-            this.setHealthPoints(remainingPoints);
+            double remainingPointsHealth = this.getHealthPoints() - remainingPoints;
+            this.setHealthPoints(remainingPointsHealth);
         }
     }
 }

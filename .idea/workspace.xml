@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="56a525a6-d44b-4e7d-8edd-5819fd1e561e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Assassin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Assassin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Knight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Monk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Monk.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Warrior.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GameEngine.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/models/Assassin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/Assassin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/models/Hero.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/Hero.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/models/Knight.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/Knight.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/models/Monk.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/Monk.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/models/Warrior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/Warrior.class" afterDir="false" />
-    </list>
+    <list default="true" id="56a525a6-d44b-4e7d-8edd-5819fd1e561e" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,10 +21,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Assassin.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Assassin.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/models/Assassin.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
+            <state relative-caret-position="293">
               <caret line="33" column="16" lean-forward="true" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
             </state>
           </provider>
@@ -82,10 +66,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameEngine.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameEngine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/engine/GameEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="434">
               <caret line="50" column="26" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
             </state>
           </provider>
@@ -117,7 +101,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="75" />
     <option name="y" value="34" />
     <option name="width" value="1281" />
@@ -489,6 +473,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="75" y="34" width="1281" height="732" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -498,12 +483,12 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33653846" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.33653846" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2490242" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2490242" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -737,17 +722,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/Assassin.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/engine/GameEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="33" column="16" lean-forward="true" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
+        <state relative-caret-position="434">
+          <caret line="50" column="26" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/engine/GameEngine.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/Assassin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="50" column="26" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
+        <state relative-caret-position="293">
+          <caret line="33" column="16" lean-forward="true" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
         </state>
       </provider>
     </entry>

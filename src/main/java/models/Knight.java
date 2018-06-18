@@ -31,15 +31,10 @@ public class Knight extends Hero {
     @Override
     public void damageReceived(double damageMade) {
         double remainingPointsForDamage;
-        if (this.getCounterForDefence() % NUMBER_OF_PERCENTAGE_DAMAGE == 0) {
+        if (this.getCounterForDefence() % NUMBER_OF_PERCENTAGE_DAMAGE != 0) {
             remainingPointsForDamage = damageMade - percentageOfAttacking();
-            if (remainingPointsForDamage > 0) {
                 double remainingPointsHealth = this.getHealthPoints() - remainingPointsForDamage;
                 this.setHealthPoints(remainingPointsHealth);
-            }
-        } else {
-            remainingPointsForDamage = this.getHealthPoints() - damageMade;
-            this.setHealthPoints(remainingPointsForDamage);
         }
     }
 
