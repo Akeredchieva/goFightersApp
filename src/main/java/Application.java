@@ -2,14 +2,14 @@ import models.Hero;
 import models.Knight;
 import models.Warrior;
 
+import java.io.IOException;
+
 public class Application {
 
-    public static void main(String[] args) {
-
-        Hero warrior = new Knight();
-        Hero warrior2 = new Knight();
+    public static void main(String[] args) throws IOException {
+        ;
         GameEngine gameEngine = new GameEngine();
-        gameEngine.attack(warrior,warrior2);
+        gameEngine.start();
 
     }
 }

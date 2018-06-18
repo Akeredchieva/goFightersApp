@@ -7,6 +7,12 @@ package models;
  */
 public abstract class Hero {
 
+    private static final int DEFAULT_VALUE_COUNTER = 0;
+    private static final int MIN_BOUNDER_PERCENTAGE = 80;
+    private static final int MAX_BOUNDER_PERCENTAGE = 120;
+    private static final int MAX_COUNTER = 10;
+    private static final int MIN_COUNTER = 1;
+
     /**
      * The characteristic of every player.
      */
@@ -29,8 +35,8 @@ public abstract class Hero {
         this.setHealthPoints(healthPoints);
         this.setAttackPoints(attackPoints);
         this.setArmorPoints(armorPoints);
-        this.setCounterForAttack(0);
-        this.setCounterForDefence(0);
+        this.setCounterForAttack(DEFAULT_VALUE_COUNTER);
+        this.setCounterForDefence(DEFAULT_VALUE_COUNTER);
     }
 
     /**
@@ -55,8 +61,8 @@ public abstract class Hero {
      * Method which calculate the basic atack damage that the player will make without any bonus skills.
      */
     public double percentageOfAttacking(){
-        double range = (double)(120 - 80 + 1);
-        return this.getArmorPoints()*(((Math.random() * range) + 80)/100);
+        double range = (MAX_BOUNDER_PERCENTAGE - MIN_BOUNDER_PERCENTAGE + 1);
+        return this.getArmorPoints() * (((Math.random() * range) + MIN_BOUNDER_PERCENTAGE) / 100);
     }
 
     /**
@@ -123,11 +129,11 @@ public abstract class Hero {
      */
     public int getCounterForAttack() {
         int counter = this.counterForAttack;
-        if (counter < 10) {
+        if (counter < MAX_COUNTER) {
             this.setCounterForAttack(++counter);
             return counter;
         } else {
-            counter = 1;
+            counter = MIN_COUNTER;
             this.setCounterForAttack(counter);
             return counter;
         }
