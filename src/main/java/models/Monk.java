@@ -17,8 +17,8 @@ public class Monk extends Hero {
     /**
      * Constructor for the player Monk which call the constructor of the parent and set up the starting values of the player.
      */
-    public Monk() {
-        super(HEALTH_POINT_MONK, ATTACK_POINT_MONK, ARMOR_POINT_MONK);
+    public Monk(String name) {
+        super(HEALTH_POINT_MONK, ATTACK_POINT_MONK, ARMOR_POINT_MONK, name);
     }
 
 

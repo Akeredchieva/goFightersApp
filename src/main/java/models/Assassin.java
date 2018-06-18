@@ -18,12 +18,12 @@ public class Assassin extends Hero {
     /**
      * Default constructor which call the constructor of the parent and set the properties of the hero.
      */
-    public Assassin() {
-        super(HEALTH_POINT_ASSASSIN , ATTACK_POINT_ASSASSIN , ARMOR_POINT_ASSASSIN);
+    public Assassin(String name) {
+        super(HEALTH_POINT_ASSASSIN , ATTACK_POINT_ASSASSIN , ARMOR_POINT_ASSASSIN, name);
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      * @return The points with which the player will attack.
      */
     @Override

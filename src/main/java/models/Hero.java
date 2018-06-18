@@ -24,6 +24,7 @@ public abstract class Hero {
      */
     private int counterForAttack;
     private int counterForDefence;
+    private String name;
 
     /**
      * Constructor which set the points of every player.
@@ -31,12 +32,13 @@ public abstract class Hero {
      * @param attackPoints parameter for the attack points of the current hero, based on his type.
      * @param armorPoints parameter for the armor points of the current hero, based on his type.
      */
-    protected Hero(int healthPoints, int attackPoints, int armorPoints) {
+    protected Hero(int healthPoints, int attackPoints, int armorPoints, String name) {
         this.setHealthPoints(healthPoints);
         this.setAttackPoints(attackPoints);
         this.setArmorPoints(armorPoints);
         this.setCounterForAttack(DEFAULT_VALUE_COUNTER);
         this.setCounterForDefence(DEFAULT_VALUE_COUNTER);
+        this.setName(name);
     }
 
     /**
@@ -184,5 +186,13 @@ public abstract class Hero {
      */
     public boolean isAlive(){
         return this.getHealthPoints() > 0;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

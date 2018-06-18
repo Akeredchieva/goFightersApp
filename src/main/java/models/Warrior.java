@@ -17,7 +17,7 @@ public class Warrior extends Hero {
     /**
      * Constructor for the player Warrior which call the constructor of the parent and set up the starting values of the player.
      */
-    public Warrior() {
-        super(HEALTH_POINT_WARRIOR, ATTACK_POINT_WARRIOR, ARMOR_POINT_WARRIOR);
+    public Warrior(String name) {
+        super(HEALTH_POINT_WARRIOR, ATTACK_POINT_WARRIOR, ARMOR_POINT_WARRIOR, name);
     }
 }

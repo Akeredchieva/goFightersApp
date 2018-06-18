@@ -19,13 +19,14 @@ public class Knight extends Hero {
     /**
      * Constructor for the player Knight which call the constructor of the parent and set up the starting values of the player.
      */
-    public Knight() {
-        super(HEALTH_POINT_KNIGHT, ATTACK_POINT_KNIGHT, ARMOR_POINT_KNIGHT);
+    public Knight(String name) {
+        super(HEALTH_POINT_KNIGHT, ATTACK_POINT_KNIGHT, ARMOR_POINT_KNIGHT, name);
     }
 
     /**
      * Method receive a counter which is from 1 to 10. Then try to divide the counter to 5 - because in numbers from 1 to 10
      * there is only two numbers which can be divided by 5 without rest which is 20% of the numbers.
+     * @inheritDoc
      * @param damageMade value of the current attack damage.
      */
     @Override
