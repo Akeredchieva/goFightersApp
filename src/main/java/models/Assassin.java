@@ -10,9 +10,10 @@ public class Assassin extends Hero {
     /**
      * static values for the points of the player.
      */
-    private static final int HEALTH_POINT_ASSASSIN = 150;
+    private static final int HEALTH_POINT_ASSASSIN = 15000;
     private static final int ATTACK_POINT_ASSASSIN  = 50;
-    private static final int ARMOR_POINT_ASSASSIN  = 200;
+    private static final int ARMOR_POINT_ASSASSIN  = 30;
+    private static final int NUMBER_OF_PERCENTAGE_ATTACK = 3;
 
     /**
      * Default constructor which call the constructor of the parent and set the properties of the hero.
@@ -28,7 +29,7 @@ public class Assassin extends Hero {
     @Override
     public double attackingDamage() {
         double rowAttackingPoints = this.percentageOfAttacking();
-        if (this.getCounterForAttack() % 3 == 0) {
+        if (this.getCounterForAttack() % NUMBER_OF_PERCENTAGE_ATTACK == 0) {
             return rowAttackingPoints * 3;
         } else {
             return rowAttackingPoints;

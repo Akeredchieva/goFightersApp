@@ -12,7 +12,7 @@ public class Warrior extends Hero {
      */
     private static final int HEALTH_POINT_WARRIOR = 200;
     private static final int ATTACK_POINT_WARRIOR = 20;
-    private static final int ARMOR_POINT_WARRIOR = 200;
+    private static final int ARMOR_POINT_WARRIOR = 60;
 
     /**
      * Constructor for the player Warrior which call the constructor of the parent and set up the starting values of the player.

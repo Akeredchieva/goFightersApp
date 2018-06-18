@@ -12,7 +12,7 @@ public class Knight extends Hero {
      */
     private static final int HEALTH_POINT_KNIGHT = 180;
     private static final int ATTACK_POINT_KNIGHT = 20;
-    private static final int ARMOR_POINT_KNIGHT = 100;
+    private static final int ARMOR_POINT_KNIGHT = 10;
     private static final int NUMBER_OF_PERCENTAGE_DAMAGE = 5;
     private static final int NUMBER_OF_PERCENTAGE_ATTACK = 7;
 

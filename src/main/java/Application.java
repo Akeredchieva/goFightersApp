@@ -1,6 +1,4 @@
-import models.Hero;
-import models.Knight;
-import models.Warrior;
+import engine.GameEngine;
 
 import java.io.IOException;
 

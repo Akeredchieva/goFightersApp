@@ -1,3 +1,5 @@
+package engine;
+
 import models.*;
 
 import java.io.BufferedReader;
@@ -38,21 +40,31 @@ public class GameEngine {
         Hero playerTwo;
         switch (thePlayer) {
             case 1: playerOne = new Warrior();
+                    break;
             case 2: playerOne = new Assassin();
+                    break;
             case 3: playerOne = new Knight();
+                    break;
             case 4: playerOne = new Monk();
+                    break;
             default: playerOne = new Warrior();
+                    break;
         }
         System.out.println("Choose the player two:\n(Please press one of the numbers to choose the type of the player)\n" +
-                "1. Warrior\n2. Assassin\n3.Knight\n4. Monk");
+                "1. Warrior\n2. Assassin\n3. Knight\n4. Monk");
         bufferedReader = new BufferedReader(new InputStreamReader(System.in)).readLine();
         thePlayer = Integer.parseInt(bufferedReader);
         switch (thePlayer) {
             case 1: playerTwo = new Warrior();
+                    break;
             case 2: playerTwo = new Assassin();
+                    break;
             case 3: playerTwo = new Knight();
+                    break;
             case 4: playerTwo = new Monk();
+                    break;
             default: playerTwo = new Warrior();
+                    break;
         }
         System.out.println("Let the game begin: \n");
         this.attack(playerOne,playerTwo);

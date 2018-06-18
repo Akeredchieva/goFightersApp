@@ -60,7 +60,7 @@ public abstract class Hero {
     /**
      * Method which calculate the basic atack damage that the player will make without any bonus skills.
      */
-    public double percentageOfAttacking(){
+    protected double percentageOfAttacking(){
         double range = (MAX_BOUNDER_PERCENTAGE - MIN_BOUNDER_PERCENTAGE + 1);
         return this.getArmorPoints() * (((Math.random() * range) + MIN_BOUNDER_PERCENTAGE) / 100);
     }
