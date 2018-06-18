@@ -29,19 +29,16 @@ public class Knight extends Hero {
     //TODO: Change the duplicating code.
     @Override
     public void damageReceived(double damageMade) {
-        double remainingPoints;
+        double remainingPointsForDamage;
         if (this.getCounterForDefence() % 5 == 0) {
-            remainingPoints = this.getArmorPoints() - percentageOfAttacking();
-            if (remainingPoints < 0) {
-                double remainingPointsHealth = this.getHealthPoints() - remainingPoints;
+            remainingPointsForDamage = damageMade - percentageOfAttacking();
+            if (remainingPointsForDamage > 0) {
+                double remainingPointsHealth = this.getHealthPoints() - remainingPointsForDamage;
                 this.setHealthPoints(remainingPointsHealth);
-                this.setArmorPoints(0);
-            } else {
-                this.setArmorPoints(remainingPoints);
             }
         } else {
-            remainingPoints = this.getHealthPoints() - damageMade;
-            this.setHealthPoints(remainingPoints);
+            remainingPointsForDamage = this.getHealthPoints() - damageMade;
+            this.setHealthPoints(remainingPointsForDamage);
         }
     }
 

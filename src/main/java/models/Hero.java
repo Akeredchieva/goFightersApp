@@ -40,7 +40,7 @@ public abstract class Hero {
     public void damageReceived(double damageMade){
         double remainingHealthPoints = getHealthPoints()- damageMade;
         setHealthPoints(remainingHealthPoints);
-    };
+    }
 
     /**
      * Abstract method for what damage will send the player.
@@ -48,7 +48,8 @@ public abstract class Hero {
      */
     public double attackingDamage(){
         return this.percentageOfAttacking();
-    };
+    }
+
 
     /**
      * Method which calculate the basic atack damage that the player will make without any bonus skills.
@@ -166,11 +167,11 @@ public abstract class Hero {
         this.counterForDefence = counterForDefence;
     }
 
+    /**
+     * Boolean method which check if the hero is alive
+     * @return true if he still have health points, false if he doesn't.
+     */
     public boolean isAlive(){
-        if (this.getHealthPoints() <= 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.getHealthPoints() > 0;
     }
 }

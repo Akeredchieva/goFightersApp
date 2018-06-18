@@ -23,15 +23,12 @@ public class Monk extends Hero {
 
     @Override
     public void damageReceived(double damageMade) {
-        double remainingPoints = 0.0;
+        double remainingPoints;
         if (this.getCounterForDefence() % 3 == 0) {
-            remainingPoints = this.getArmorPoints() - percentageOfAttacking();
-            if (remainingPoints < 0) {
+            remainingPoints = damageMade - percentageOfAttacking();
+            if (remainingPoints > 0) {
                 double remainingPointsHealth = this.getHealthPoints() - remainingPoints;
                 this.setHealthPoints(remainingPointsHealth);
-                this.setArmorPoints(0);
-            } else {
-                this.setArmorPoints(remainingPoints);
             }
         } else {
             remainingPoints = this.getHealthPoints() - damageMade;
