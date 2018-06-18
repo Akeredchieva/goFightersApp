@@ -8,10 +8,12 @@ package models;
 public abstract class Hero {
 
     private static final int DEFAULT_VALUE_COUNTER = 0;
-    private static final int MIN_BOUNDER_PERCENTAGE = 80;
-    private static final int MAX_BOUNDER_PERCENTAGE = 120;
+    protected static final int MIN_BOUNDER_PERCENTAGE_RAW_ATTACK = 80;
+    protected static final int MAX_BOUNDER_PERCENTAGE_RAW_ATTACK = 120;
     private static final int MAX_COUNTER = 10;
     private static final int MIN_COUNTER = 1;
+    protected static final int MIN_BOUNDER_PERCENTAGE = 0;
+    protected static final int MAX_BOUNDER_PERCENTAGE = 100;
 
     /**
      * The characteristic of every player.
@@ -55,16 +57,16 @@ public abstract class Hero {
      * @return The value of the damage in double.
      */
     public double attackingDamage(){
-        return this.getAttackPoints() * this.percentageOfAttacking();
+        return this.getAttackPoints() * this.percentageOfAttacking(MIN_BOUNDER_PERCENTAGE_RAW_ATTACK, MAX_BOUNDER_PERCENTAGE_RAW_ATTACK);
     }
 
 
     /**
      * Method which calculate the basic attack damage that the player will make without any bonus skills.
      */
-    protected double percentageOfAttacking(){
-        double range = (MAX_BOUNDER_PERCENTAGE - MIN_BOUNDER_PERCENTAGE + 1);
-        return (((Math.random() * range) + MIN_BOUNDER_PERCENTAGE) / 100);
+    protected double percentageOfAttacking(int minBounder, int maxBounder){
+        double range = (maxBounder - minBounder + 1);
+        return (((Math.random() * range) + minBounder) / 100);
     }
 
     /**
@@ -96,13 +98,16 @@ public abstract class Hero {
         return attackPoints;
     }
 
+
     /**
      * Setter for the attack points of the player.
      * @param attackPoints the input parameter for the attack points of the current player.
      */
+    /*
     protected void setAttackPoints(int attackPoints) {
         this.attackPoints = attackPoints;
     }
+    */
 
     /**
      * Getter for armor points of the current player.
@@ -134,6 +139,7 @@ public abstract class Hero {
      * divide by 3 so the percentage will be 30. 50% can be when divide the numbers with 2 and etc.
      * @return Return the value of the counter to be divide by the special number.
      */
+    //TODO: mahni go
     public int getCounterForAttack() {
         int counter = this.counterForAttack;
         if (counter < MAX_COUNTER) {
@@ -160,6 +166,7 @@ public abstract class Hero {
      * divide by 3 so the percentage will be 30. 50% can be when divide the numbers with 2 and etc.
      * @return Return the value of the counter to be divide by the special number.
      */
+    // TODO: mahni go
     public int getCounterForDefence() {
         int counter = this.counterForDefence;
         if (counter < 10) {
@@ -192,7 +199,7 @@ public abstract class Hero {
         return name;
     }
 
-    public void setName(String name) {
+    protected void setName(String name) {
         this.name = name;
     }
 }

@@ -12,7 +12,7 @@ public class Monk extends Hero {
     private static final int HEALTH_POINT_MONK = 1000;
     private static final int ATTACK_POINT_MONK = 50;
     private static final int ARMOR_POINT_MONK = 50;
-    private static final int NUMBER_OF_PERCENTAGE_DAMAGE = 3;
+    private static final int NUMBER_OF_PERCENTAGE_DAMAGE = 30;
 
     /**
      * Constructor for the player Monk which call the constructor of the parent and set up the starting values of the player.
@@ -25,8 +25,9 @@ public class Monk extends Hero {
     @Override
     public void damageReceived(double damageMade) {
         double remainingPoints;
-        if (this.getCounterForDefence() % NUMBER_OF_PERCENTAGE_DAMAGE == 0) {
-            remainingPoints = damageMade - (this.getArmorPoints() * this.percentageOfAttacking());
+        double chanceOfSkill = percentageOfAttacking(MIN_BOUNDER_PERCENTAGE,MAX_BOUNDER_PERCENTAGE);
+        if (chanceOfSkill <= NUMBER_OF_PERCENTAGE_DAMAGE) {
+            remainingPoints = damageMade - (this.getArmorPoints() * this.percentageOfAttacking(MIN_BOUNDER_PERCENTAGE_RAW_ATTACK, MAX_BOUNDER_PERCENTAGE_RAW_ATTACK));
             double remainingPointsHealth = this.getHealthPoints() - remainingPoints;
             this.setHealthPoints(remainingPointsHealth);
         } else {

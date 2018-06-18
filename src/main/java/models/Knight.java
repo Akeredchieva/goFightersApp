@@ -13,8 +13,8 @@ public class Knight extends Hero {
     private static final int HEALTH_POINT_KNIGHT = 1800;
     private static final int ATTACK_POINT_KNIGHT = 200;
     private static final int ARMOR_POINT_KNIGHT = 100;
-    private static final int NUMBER_OF_PERCENTAGE_DAMAGE = 5;
-    private static final int NUMBER_OF_PERCENTAGE_ATTACK = 7;
+    private static final int NUMBER_OF_PERCENTAGE_DAMAGE = 20;
+    private static final int NUMBER_OF_PERCENTAGE_ATTACK = 10;
 
     /**
      * Constructor for the player Knight which call the constructor of the parent and set up the starting values of the player.
@@ -32,8 +32,9 @@ public class Knight extends Hero {
     @Override
     public void damageReceived(double damageMade) {
         double remainingPointsForDamage;
-        if (this.getCounterForDefence() % NUMBER_OF_PERCENTAGE_DAMAGE == 0) {
-            remainingPointsForDamage = damageMade - (this.getArmorPoints() * percentageOfAttacking());
+        double chanceOfSkill = percentageOfAttacking(MIN_BOUNDER_PERCENTAGE,MAX_BOUNDER_PERCENTAGE);
+        if (chanceOfSkill <= NUMBER_OF_PERCENTAGE_DAMAGE ) {
+            remainingPointsForDamage = damageMade - (this.getArmorPoints() * percentageOfAttacking(MIN_BOUNDER_PERCENTAGE_RAW_ATTACK, MAX_BOUNDER_PERCENTAGE_RAW_ATTACK));
             double remainingPointsHealth = this.getHealthPoints() - remainingPointsForDamage;
             this.setHealthPoints(remainingPointsHealth);
         } else {
@@ -49,8 +50,9 @@ public class Knight extends Hero {
      */
     @Override
     public double attackingDamage() {
-        double rowAttackingPoints = this.getAttackPoints() * this.percentageOfAttacking();
-        if (this.getCounterForAttack() % NUMBER_OF_PERCENTAGE_ATTACK == 0) {
+        double chanceOfSkill = percentageOfAttacking(MIN_BOUNDER_PERCENTAGE,MAX_BOUNDER_PERCENTAGE);
+        double rowAttackingPoints = this.getAttackPoints() * this.percentageOfAttacking(MIN_BOUNDER_PERCENTAGE_RAW_ATTACK, MAX_BOUNDER_PERCENTAGE_RAW_ATTACK);
+        if (chanceOfSkill <= NUMBER_OF_PERCENTAGE_ATTACK ) {
             return rowAttackingPoints * 2;
         } else {
             return rowAttackingPoints;
