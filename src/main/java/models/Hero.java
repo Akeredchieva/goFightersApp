@@ -55,16 +55,16 @@ public abstract class Hero {
      * @return The value of the damage in double.
      */
     public double attackingDamage(){
-        return this.percentageOfAttacking();
+        return this.getAttackPoints() * this.percentageOfAttacking();
     }
 
 
     /**
-     * Method which calculate the basic atack damage that the player will make without any bonus skills.
+     * Method which calculate the basic attack damage that the player will make without any bonus skills.
      */
     protected double percentageOfAttacking(){
         double range = (MAX_BOUNDER_PERCENTAGE - MIN_BOUNDER_PERCENTAGE + 1);
-        return this.getArmorPoints() * (((Math.random() * range) + MIN_BOUNDER_PERCENTAGE) / 100);
+        return (((Math.random() * range) + MIN_BOUNDER_PERCENTAGE) / 100);
     }
 
     /**

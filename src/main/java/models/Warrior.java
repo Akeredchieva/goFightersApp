@@ -10,9 +10,9 @@ public class Warrior extends Hero {
     /**
      * Default values from the beginning of the game of the player Warrior. They should be the same in the start of the game.
      */
-    private static final int HEALTH_POINT_WARRIOR = 200;
-    private static final int ATTACK_POINT_WARRIOR = 20;
-    private static final int ARMOR_POINT_WARRIOR = 60;
+    private static final int HEALTH_POINT_WARRIOR = 2000;
+    private static final int ATTACK_POINT_WARRIOR = 200;
+    private static final int ARMOR_POINT_WARRIOR = 600;
 
     /**
      * Constructor for the player Warrior which call the constructor of the parent and set up the starting values of the player.

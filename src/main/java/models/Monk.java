@@ -9,7 +9,7 @@ public class Monk extends Hero {
     /**
      * Default values from the beginning of the game of the player Monk. They should be the same in the start of the game.
      */
-    private static final int HEALTH_POINT_MONK = 100;
+    private static final int HEALTH_POINT_MONK = 1000;
     private static final int ATTACK_POINT_MONK = 50;
     private static final int ARMOR_POINT_MONK = 50;
     private static final int NUMBER_OF_PERCENTAGE_DAMAGE = 3;
@@ -26,9 +26,12 @@ public class Monk extends Hero {
     public void damageReceived(double damageMade) {
         double remainingPoints;
         if (this.getCounterForDefence() % NUMBER_OF_PERCENTAGE_DAMAGE == 0) {
-            remainingPoints = damageMade - percentageOfAttacking();
+            remainingPoints = damageMade - (this.getArmorPoints() * this.percentageOfAttacking());
             double remainingPointsHealth = this.getHealthPoints() - remainingPoints;
             this.setHealthPoints(remainingPointsHealth);
+        } else {
+            remainingPoints = this.getHealthPoints() - damageMade;
+            this.setHealthPoints(remainingPoints);
         }
     }
 }

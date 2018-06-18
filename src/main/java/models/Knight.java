@@ -10,9 +10,9 @@ public class Knight extends Hero {
     /**
      * Default values from the beginning of the game of the player Monk. They should be the same in the start of the game.
      */
-    private static final int HEALTH_POINT_KNIGHT = 180;
-    private static final int ATTACK_POINT_KNIGHT = 20;
-    private static final int ARMOR_POINT_KNIGHT = 10;
+    private static final int HEALTH_POINT_KNIGHT = 1800;
+    private static final int ATTACK_POINT_KNIGHT = 200;
+    private static final int ARMOR_POINT_KNIGHT = 100;
     private static final int NUMBER_OF_PERCENTAGE_DAMAGE = 5;
     private static final int NUMBER_OF_PERCENTAGE_ATTACK = 7;
 
@@ -32,10 +32,13 @@ public class Knight extends Hero {
     @Override
     public void damageReceived(double damageMade) {
         double remainingPointsForDamage;
-        if (this.getCounterForDefence() % NUMBER_OF_PERCENTAGE_DAMAGE != 0) {
-            remainingPointsForDamage = damageMade - percentageOfAttacking();
-                double remainingPointsHealth = this.getHealthPoints() - remainingPointsForDamage;
-                this.setHealthPoints(remainingPointsHealth);
+        if (this.getCounterForDefence() % NUMBER_OF_PERCENTAGE_DAMAGE == 0) {
+            remainingPointsForDamage = damageMade - (this.getArmorPoints() * percentageOfAttacking());
+            double remainingPointsHealth = this.getHealthPoints() - remainingPointsForDamage;
+            this.setHealthPoints(remainingPointsHealth);
+        } else {
+            remainingPointsForDamage = this.getHealthPoints() - damageMade;
+            this.setHealthPoints(remainingPointsForDamage);
         }
     }
 
@@ -46,7 +49,7 @@ public class Knight extends Hero {
      */
     @Override
     public double attackingDamage() {
-        double rowAttackingPoints = this.percentageOfAttacking();
+        double rowAttackingPoints = this.getAttackPoints() * this.percentageOfAttacking();
         if (this.getCounterForAttack() % NUMBER_OF_PERCENTAGE_ATTACK == 0) {
             return rowAttackingPoints * 2;
         } else {

@@ -11,8 +11,8 @@ public class Assassin extends Hero {
      * static values for the points of the player.
      */
     private static final int HEALTH_POINT_ASSASSIN = 15000;
-    private static final int ATTACK_POINT_ASSASSIN  = 50;
-    private static final int ARMOR_POINT_ASSASSIN  = 30;
+    private static final int ATTACK_POINT_ASSASSIN  = 500;
+    private static final int ARMOR_POINT_ASSASSIN  = 300;
     private static final int NUMBER_OF_PERCENTAGE_ATTACK = 3;
 
     /**
@@ -28,7 +28,7 @@ public class Assassin extends Hero {
      */
     @Override
     public double attackingDamage() {
-        double rowAttackingPoints = this.percentageOfAttacking();
+        double rowAttackingPoints = this.getAttackPoints() * this.percentageOfAttacking();
         if (this.getCounterForAttack() % NUMBER_OF_PERCENTAGE_ATTACK == 0) {
             return rowAttackingPoints * 3;
         } else {
