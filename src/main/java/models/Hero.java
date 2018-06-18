@@ -7,11 +7,17 @@ package models;
  */
 public abstract class Hero {
 
-    private static final int DEFAULT_VALUE_COUNTER = 0;
+    /**
+     * Default minimum boundary for the raw attack.
+     */
     protected static final int MIN_BOUNDER_PERCENTAGE_RAW_ATTACK = 80;
+    /**
+     * Default maximum boundary for the raw attack.
+     */
     protected static final int MAX_BOUNDER_PERCENTAGE_RAW_ATTACK = 120;
-    private static final int MAX_COUNTER = 10;
-    private static final int MIN_COUNTER = 1;
+    /**
+     * Default maximum boundary for the chance of the special skill.
+     */
     protected static final int MIN_BOUNDER_PERCENTAGE = 0;
     protected static final int MAX_BOUNDER_PERCENTAGE = 100;
 
@@ -21,11 +27,6 @@ public abstract class Hero {
     private double healthPoints;
     private double attackPoints;
     private double armorPoints;
-    /**
-     * Two parameters for the chances of different skills (for the attack skills and for the defence skills)
-     */
-    private int counterForAttack;
-    private int counterForDefence;
     private String name;
 
     /**
@@ -38,8 +39,6 @@ public abstract class Hero {
         this.setHealthPoints(healthPoints);
         this.setAttackPoints(attackPoints);
         this.setArmorPoints(armorPoints);
-        this.setCounterForAttack(DEFAULT_VALUE_COUNTER);
-        this.setCounterForDefence(DEFAULT_VALUE_COUNTER);
         this.setName(name);
     }
 
@@ -62,7 +61,10 @@ public abstract class Hero {
 
 
     /**
-     * Method which calculate the basic attack damage that the player will make without any bonus skills.
+     * Method which calculate a random number between some boundary.
+     * @param minBounder The minimum boundary.
+     * @param maxBounder The maximum boundary.
+     * @return number between the max and min boundary (between 0.01 to 0.99 depends on the boundaries)
      */
     protected double percentageOfAttacking(int minBounder, int maxBounder){
         double range = (maxBounder - minBounder + 1);
@@ -98,17 +100,6 @@ public abstract class Hero {
         return attackPoints;
     }
 
-
-    /**
-     * Setter for the attack points of the player.
-     * @param attackPoints the input parameter for the attack points of the current player.
-     */
-    /*
-    protected void setAttackPoints(int attackPoints) {
-        this.attackPoints = attackPoints;
-    }
-    */
-
     /**
      * Getter for armor points of the current player.
      * @return The armor points of the player in double.
@@ -131,60 +122,6 @@ public abstract class Hero {
      */
     public void setAttackPoints(double attackPoints) {
         this.attackPoints = attackPoints;
-    }
-
-    /**
-     * Getter which check if the counter is above 10. If it is not then it increase it and return the counter. If it is then it turns it do the 1.
-     * The logic is that all of the numbers to 10 can be divide by one special number, because for example from 1 to 10 3 numbers can be
-     * divide by 3 so the percentage will be 30. 50% can be when divide the numbers with 2 and etc.
-     * @return Return the value of the counter to be divide by the special number.
-     */
-    //TODO: mahni go
-    public int getCounterForAttack() {
-        int counter = this.counterForAttack;
-        if (counter < MAX_COUNTER) {
-            this.setCounterForAttack(++counter);
-            return counter;
-        } else {
-            counter = MIN_COUNTER;
-            this.setCounterForAttack(counter);
-            return counter;
-        }
-    }
-
-    /**
-     * Setter for the counter for the chance of the attack skill of the player.
-     * @param counterForAttack the counter with which count the chance of the special skill.
-     */
-    public void setCounterForAttack(int counterForAttack) {
-        this.counterForAttack = counterForAttack;
-    }
-
-    /**
-     * Getter which check if the counter is above 10. If it is not then it increase it and return the counter. If it is then it turns it do the 1.
-     * The logic is that all of the numbers to 10 can be divide by one special number, because for example from 1 to 10 3 numbers can be
-     * divide by 3 so the percentage will be 30. 50% can be when divide the numbers with 2 and etc.
-     * @return Return the value of the counter to be divide by the special number.
-     */
-    // TODO: mahni go
-    public int getCounterForDefence() {
-        int counter = this.counterForDefence;
-        if (counter < 10) {
-            this.setCounterForDefence(++counter);
-            return counter;
-        } else {
-            counter = 1;
-            this.setCounterForDefence(counter);
-            return counter;
-        }
-    }
-
-    /**
-     * Setter for the counter for the chance of the defence skill of the player.
-     * @param counterForDefence the counter with which count the chance of the special skill.
-     */
-    public void setCounterForDefence(int counterForDefence) {
-        this.counterForDefence = counterForDefence;
     }
 
     /**

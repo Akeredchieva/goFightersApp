@@ -21,15 +21,18 @@ public class Monk extends Hero {
         super(HEALTH_POINT_MONK, ATTACK_POINT_MONK, ARMOR_POINT_MONK, name);
     }
 
-
+    //TODO: Proveri dali pravilno si si napravila logikata
     @Override
     public void damageReceived(double damageMade) {
         double remainingPoints;
-        double chanceOfSkill = percentageOfAttacking(MIN_BOUNDER_PERCENTAGE,MAX_BOUNDER_PERCENTAGE);
+        double chanceOfSkill = percentageOfAttacking(MIN_BOUNDER_PERCENTAGE,MAX_BOUNDER_PERCENTAGE) * 100;
         if (chanceOfSkill <= NUMBER_OF_PERCENTAGE_DAMAGE) {
-            remainingPoints = damageMade - (this.getArmorPoints() * this.percentageOfAttacking(MIN_BOUNDER_PERCENTAGE_RAW_ATTACK, MAX_BOUNDER_PERCENTAGE_RAW_ATTACK));
-            double remainingPointsHealth = this.getHealthPoints() - remainingPoints;
-            this.setHealthPoints(remainingPointsHealth);
+            double percentageOfAttack = this.percentageOfAttacking(MIN_BOUNDER_PERCENTAGE_RAW_ATTACK, MAX_BOUNDER_PERCENTAGE_RAW_ATTACK);
+            remainingPoints = (this.getArmorPoints() * percentageOfAttack) - damageMade;
+            if (remainingPoints < 0) {
+                double remainingPointsHealth = this.getHealthPoints() - remainingPoints;
+                this.setHealthPoints(remainingPointsHealth);
+            }
         } else {
             remainingPoints = this.getHealthPoints() - damageMade;
             this.setHealthPoints(remainingPoints);

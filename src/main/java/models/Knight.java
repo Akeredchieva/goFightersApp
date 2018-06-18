@@ -32,11 +32,15 @@ public class Knight extends Hero {
     @Override
     public void damageReceived(double damageMade) {
         double remainingPointsForDamage;
-        double chanceOfSkill = percentageOfAttacking(MIN_BOUNDER_PERCENTAGE,MAX_BOUNDER_PERCENTAGE);
+        double remainingPointsHealth;
+        double chanceOfSkill = percentageOfAttacking(MIN_BOUNDER_PERCENTAGE,MAX_BOUNDER_PERCENTAGE) * 100;
         if (chanceOfSkill <= NUMBER_OF_PERCENTAGE_DAMAGE ) {
-            remainingPointsForDamage = damageMade - (this.getArmorPoints() * percentageOfAttacking(MIN_BOUNDER_PERCENTAGE_RAW_ATTACK, MAX_BOUNDER_PERCENTAGE_RAW_ATTACK));
-            double remainingPointsHealth = this.getHealthPoints() - remainingPointsForDamage;
-            this.setHealthPoints(remainingPointsHealth);
+            double percentageOfAttack = this.percentageOfAttacking(MIN_BOUNDER_PERCENTAGE_RAW_ATTACK, MAX_BOUNDER_PERCENTAGE_RAW_ATTACK);
+            remainingPointsForDamage = (this.getArmorPoints() * percentageOfAttack) - damageMade ;
+            if (remainingPointsForDamage < 0) {
+                remainingPointsHealth = this.getHealthPoints() - remainingPointsForDamage;
+                this.setHealthPoints(remainingPointsHealth);
+            }
         } else {
             remainingPointsForDamage = this.getHealthPoints() - damageMade;
             this.setHealthPoints(remainingPointsForDamage);
@@ -50,7 +54,7 @@ public class Knight extends Hero {
      */
     @Override
     public double attackingDamage() {
-        double chanceOfSkill = percentageOfAttacking(MIN_BOUNDER_PERCENTAGE,MAX_BOUNDER_PERCENTAGE);
+        double chanceOfSkill = percentageOfAttacking(MIN_BOUNDER_PERCENTAGE,MAX_BOUNDER_PERCENTAGE) * 100;
         double rowAttackingPoints = this.getAttackPoints() * this.percentageOfAttacking(MIN_BOUNDER_PERCENTAGE_RAW_ATTACK, MAX_BOUNDER_PERCENTAGE_RAW_ATTACK);
         if (chanceOfSkill <= NUMBER_OF_PERCENTAGE_ATTACK ) {
             return rowAttackingPoints * 2;
