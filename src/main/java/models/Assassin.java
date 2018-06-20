@@ -23,6 +23,10 @@ public class Assassin extends Hero {
     }
 
     /**
+     * It calculate the chance to make a bigger damage with the chanceOfSkill.
+     * If the chanceOfSkill is lower or equal to 10 (percentage - NUMBER_OF_PERCENTAGE_ATTACK) then check
+     * the attack will be increase twice
+     * If the chanceOfSkill is more then 10 then the attack will be random number between 80 - 120 % from the attack points.
      * @inheritDoc
      * @return The points with which the player will attack.
      */

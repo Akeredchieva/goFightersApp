@@ -21,6 +21,10 @@ public class Monk extends Hero {
         super(HEALTH_POINT_MONK, ATTACK_POINT_MONK, ARMOR_POINT_MONK, name);
     }
 
+    /**
+     * {@inheritDoc}
+     * @param damageMade value of the current attack damage.
+     */
     @Override
     public void damageReceived(double damageMade) {
         double remainingPoints;

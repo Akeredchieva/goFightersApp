@@ -120,7 +120,7 @@ public abstract class Hero {
      * Setter for the attack points of the player.
      * @param attackPoints the input parameter for the attack points of the current player.
      */
-    public void setAttackPoints(double attackPoints) {
+    protected void setAttackPoints(double attackPoints) {
         this.attackPoints = attackPoints;
     }
 

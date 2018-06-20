@@ -24,8 +24,10 @@ public class Knight extends Hero {
     }
 
     /**
-     * Method receive a counter which is from 1 to 10. Then try to divide the counter to 5 - because in numbers from 1 to 10
-     * there is only two numbers which can be divided by 5 without rest which is 20% of the numbers.
+     * It calculate the chance to received no damage with the chanceOfSkill.
+     * If the chanceOfSkill is lower or equal to 20 (percentage - NUMBER_OF_PERCENTAGE_DAMAGE) then check
+     * if the armor is more then the damage and damage is blocked else the armor is empty and the rest of the point of the damage are subtract from health point
+     * If the chanceOfSkill is more then 20 then the all of damage points subtract from health point.
      * @inheritDoc
      * @param damageMade value of the current attack damage.
      */
@@ -48,8 +50,11 @@ public class Knight extends Hero {
     }
 
     /**
-     * Method receive a counter which is from 1 to 10. Then try to divide the counter to 7 - because in numbers from 1 to 10
-     * there is only one number which can be divided by 7 without rest which is 10% of the numbers.
+     * It calculate the chance to make a bigger damage with the chanceOfSkill.
+     * If the chanceOfSkill is lower or equal to 10 (percentage - NUMBER_OF_PERCENTAGE_ATTACK) then check
+     * the attack will be increase twice
+     * If the chanceOfSkill is more then 10 then the attack will be random number between 80 - 120 % from the attack points.
+     * {@inheritDoc}
      * @return the value of the attack points which the player will do.
      */
     @Override
