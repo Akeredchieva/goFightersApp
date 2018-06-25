@@ -15,6 +15,7 @@ public class Knight extends Hero {
     private static final int ARMOR_POINT_KNIGHT = 100;
     private static final int NUMBER_OF_PERCENTAGE_DAMAGE = 20;
     private static final int NUMBER_OF_PERCENTAGE_ATTACK = 10;
+    private static final int MULTIPLIER_KNIGHT = 2;
 
     /**
      * Constructor for the player Knight which call the constructor of the parent and set up the starting values of the player.
@@ -36,16 +37,13 @@ public class Knight extends Hero {
         double remainingPointsForDamage;
         double remainingPointsHealth;
         double chanceOfSkill = percentageOfAttacking(MIN_BOUNDER_PERCENTAGE,MAX_BOUNDER_PERCENTAGE) * 100;
-        if (chanceOfSkill <= NUMBER_OF_PERCENTAGE_DAMAGE ) {
+        if (chanceOfSkill > NUMBER_OF_PERCENTAGE_DAMAGE ) {
             double percentageOfAttack = this.percentageOfAttacking(MIN_BOUNDER_PERCENTAGE_RAW_ATTACK, MAX_BOUNDER_PERCENTAGE_RAW_ATTACK);
             remainingPointsForDamage = (this.getArmorPoints() * percentageOfAttack) - damageMade ;
             if (remainingPointsForDamage < 0) {
                 remainingPointsHealth = this.getHealthPoints() - remainingPointsForDamage;
                 this.setHealthPoints(remainingPointsHealth);
             }
-        } else {
-            remainingPointsForDamage = this.getHealthPoints() - damageMade;
-            this.setHealthPoints(remainingPointsForDamage);
         }
     }
 
@@ -62,7 +60,7 @@ public class Knight extends Hero {
         double chanceOfSkill = percentageOfAttacking(MIN_BOUNDER_PERCENTAGE,MAX_BOUNDER_PERCENTAGE) * 100;
         double rowAttackingPoints = this.getAttackPoints() * this.percentageOfAttacking(MIN_BOUNDER_PERCENTAGE_RAW_ATTACK, MAX_BOUNDER_PERCENTAGE_RAW_ATTACK);
         if (chanceOfSkill <= NUMBER_OF_PERCENTAGE_ATTACK ) {
-            return rowAttackingPoints * 2;
+            return rowAttackingPoints * MULTIPLIER_KNIGHT;
         } else {
             return rowAttackingPoints;
         }

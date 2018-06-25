@@ -14,6 +14,7 @@ public class Assassin extends Hero {
     private static final int ATTACK_POINT_ASSASSIN  = 500;
     private static final int ARMOR_POINT_ASSASSIN  = 300;
     private static final int NUMBER_OF_PERCENTAGE_ATTACK = 30;
+    private static final int MULTIPLIER_ASSASSIN = 3;
 
     /**
      * Default constructor which call the constructor of the parent and set the properties of the hero.
@@ -33,9 +34,10 @@ public class Assassin extends Hero {
     @Override
     public double attackingDamage() {
         double chanceOfSkill = this.percentageOfAttacking(MIN_BOUNDER_PERCENTAGE, MAX_BOUNDER_PERCENTAGE) * 100;
-        if (chanceOfSkill < NUMBER_OF_PERCENTAGE_ATTACK ) {
-            return this.getAttackPoints() * 3;
+        if (chanceOfSkill <= NUMBER_OF_PERCENTAGE_ATTACK ) {
+            return this.getAttackPoints() * MULTIPLIER_ASSASSIN;
         }
-        return this.getAttackPoints();
+        int temp = (int)(this.getAttackPoints() * this.percentageOfAttacking(MIN_BOUNDER_PERCENTAGE_RAW_ATTACK, MAX_BOUNDER_PERCENTAGE_RAW_ATTACK)) ;
+        return (double)temp;
     }
 }

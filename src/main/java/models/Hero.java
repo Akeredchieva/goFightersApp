@@ -1,5 +1,7 @@
 package models;
 
+import java.text.DecimalFormat;
+
 /**
  * Abstract class which represent the same functionality of every player.
  * @author Ana Keredchieva
@@ -48,7 +50,11 @@ public abstract class Hero {
      */
     public void damageReceived(double damageMade){
         double remainingHealthPoints = getHealthPoints()- damageMade;
-        setHealthPoints(remainingHealthPoints);
+        if (remainingHealthPoints > 0) {
+            setHealthPoints(remainingHealthPoints);
+        } else {
+            setHealthPoints(0);
+        }
     }
 
     /**
@@ -56,19 +62,27 @@ public abstract class Hero {
      * @return The value of the damage in double.
      */
     public double attackingDamage(){
-        return this.getAttackPoints() * this.percentageOfAttacking(MIN_BOUNDER_PERCENTAGE_RAW_ATTACK, MAX_BOUNDER_PERCENTAGE_RAW_ATTACK);
+        int temp = (int)(this.getAttackPoints() *
+                percentageOfAttacking(MIN_BOUNDER_PERCENTAGE_RAW_ATTACK, MAX_BOUNDER_PERCENTAGE_RAW_ATTACK));
+        return (double)temp;
     }
 
 
     /**
      * Method which calculate a random number between some boundary.
+     * DecimalFormat is using for set the value of the result in one number after the point.
      * @param minBounder The minimum boundary.
      * @param maxBounder The maximum boundary.
      * @return number between the max and min boundary (between 0.01 to 0.99 depends on the boundaries)
      */
     protected double percentageOfAttacking(int minBounder, int maxBounder){
+
         double range = (maxBounder - minBounder + 1);
-        return (((Math.random() * range) + minBounder) / 100);
+        DecimalFormat twoDForm = new DecimalFormat("#.#");
+        double result = ((Math.random() * range) + minBounder) / 100;
+        String resultInString = twoDForm.format(result);
+        result = Double.parseDouble(resultInString);
+        return result;
     }
 
     /**
@@ -79,9 +93,8 @@ public abstract class Hero {
         if (healthPoints <= 0) {
             setHealthPoints(0);
             return healthPoints;
-        } else {
-            return healthPoints;
         }
+        return healthPoints;
     }
 
     /**
@@ -137,6 +150,9 @@ public abstract class Hero {
     }
 
     protected void setName(String name) {
+        if (name == null || name.equalsIgnoreCase("")) {
+            throw new IllegalArgumentException("The value of the name is not correct.");
+        }
         this.name = name;
     }
 }

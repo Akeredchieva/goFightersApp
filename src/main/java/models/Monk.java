@@ -29,16 +29,13 @@ public class Monk extends Hero {
     public void damageReceived(double damageMade) {
         double remainingPoints;
         double chanceOfSkill = percentageOfAttacking(MIN_BOUNDER_PERCENTAGE,MAX_BOUNDER_PERCENTAGE) * 100;
-        if (chanceOfSkill <= NUMBER_OF_PERCENTAGE_DAMAGE) {
+        if (chanceOfSkill > NUMBER_OF_PERCENTAGE_DAMAGE) {
             double percentageOfAttack = this.percentageOfAttacking(MIN_BOUNDER_PERCENTAGE_RAW_ATTACK, MAX_BOUNDER_PERCENTAGE_RAW_ATTACK);
             remainingPoints = (this.getArmorPoints() * percentageOfAttack) - damageMade;
             if (remainingPoints < 0) {
                 double remainingPointsHealth = this.getHealthPoints() - remainingPoints;
                 this.setHealthPoints(remainingPointsHealth);
             }
-        } else {
-            remainingPoints = this.getHealthPoints() - damageMade;
-            this.setHealthPoints(remainingPoints);
         }
     }
 }

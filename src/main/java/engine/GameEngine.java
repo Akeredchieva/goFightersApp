@@ -17,16 +17,18 @@ public class GameEngine {
      * @param defencingHero Play Two
      */
     public void attack(Hero attackingHero, Hero defencingHero){
-        double damagePoints = attackingHero.attackingDamage();
-        defencingHero.damageReceived(damagePoints);
-        System.out.println("Player " + attackingHero.getName() + " attacked with " + String.format("%.2f",damagePoints) + " damage.\n" +
-                "Player " + defencingHero.getName() + " have : " +  String.format("%.2f",defencingHero.getHealthPoints()) + " health points.\n" +
-                "Player " + attackingHero.getName() + " have: " +  String.format("%.2f",attackingHero.getHealthPoints()) + " health points.\n");
+        if (defencingHero.isAlive() && attackingHero.isAlive()){
+            double damagePoints = attackingHero.attackingDamage();
+            defencingHero.damageReceived(damagePoints);
+            System.out.println("Player " + attackingHero.getName() + " attacked with " + String.format("%.2f",damagePoints) + " damage.\n" +
+                    "Player " + defencingHero.getName() + " have : " +  String.format("%.2f",defencingHero.getHealthPoints()) + " health points.\n" +
+                    "Player " + attackingHero.getName() + " have: " +  String.format("%.2f",attackingHero.getHealthPoints()) + " health points.\n");
 
-        if (defencingHero.isAlive()){
-          attack(defencingHero,attackingHero);
+            attack(defencingHero,attackingHero);
         } else {
-            if (defencingHero.getHealthPoints() > 0 ) {
+            if ((defencingHero.getHealthPoints() <= 0) && (attackingHero.getHealthPoints() <= 0)) {
+                System.out.println("The both heroes are dead.");
+            } else if (attackingHero.getHealthPoints() <= 0) {
                 System.out.println("The winner is : " + defencingHero.getName() + " the " + defencingHero.getClass().getSimpleName());
             } else {
                 System.out.println("The winner is : " + attackingHero.getName() + " the " + attackingHero.getClass().getSimpleName());
@@ -39,46 +41,55 @@ public class GameEngine {
      * Method for the starting of the game where the two players pick what type of hero they choose.
      * @throws IOException because the input value.
      */
-    public void start() throws IOException {
-        System.out.println("Choose the player one:\n(Please press one of the numbers to choose the type of the player)\n" +
-                            "1. Warrior\n2. Assassin\n3.Knight\n4. Monk");
-        String bufferedReader = new BufferedReader(new InputStreamReader(System.in)).readLine();
-        int thePlayer = Integer.parseInt(bufferedReader);
-        Hero playerOne ;
+    public void start() {
+
+        Hero playerOne;
         Hero playerTwo;
-        System.out.println("Chose the name of the player:\n");
-        String nameBR = new BufferedReader(new InputStreamReader(System.in)).readLine();
-        switch (thePlayer) {
-            case 1: playerOne = new Warrior(nameBR);
-                    break;
-            case 2: playerOne = new Assassin(nameBR);
-                    break;
-            case 3: playerOne = new Knight(nameBR);
-                    break;
-            case 4: playerOne = new Monk(nameBR);
-                    break;
-            default: playerOne = new Warrior(nameBR);
-                    break;
-        }
-        System.out.println("Choose the player two:\n(Please press one of the numbers to choose the type of the player)\n" +
-                "1. Warrior\n2. Assassin\n3. Knight\n4. Monk");
-        bufferedReader = new BufferedReader(new InputStreamReader(System.in)).readLine();
-        thePlayer = Integer.parseInt(bufferedReader);
-        System.out.println("Chose the name of the player:\n");
-        nameBR = new BufferedReader(new InputStreamReader(System.in)).readLine();
-        switch (thePlayer) {
-            case 1: playerTwo = new Warrior(nameBR);
-                    break;
-            case 2: playerTwo = new Assassin(nameBR);
-                    break;
-            case 3: playerTwo = new Knight(nameBR);
-                    break;
-            case 4: playerTwo = new Monk(nameBR);
-                    break;
-            default: playerTwo = new Warrior(nameBR);
-                    break;
-        }
+        playerOne = this.menu();
+        playerTwo = this.menu();
         System.out.println("Let the game begin: \n");
         this.attack(playerOne,playerTwo);
+    }
+
+    private Hero menu() {
+        Hero playerOne;
+        System.out.println("Choose the player :\n(Please press one of the numbers to choose the type of the player)\n" +
+                "1. Warrior\n2. Assassin\n3.Knight\n4. Monk");
+        String bufferedReader = null;
+        try {
+            bufferedReader = new BufferedReader(new InputStreamReader(System.in)).readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        assert bufferedReader != null;
+        int thePlayer = Integer.parseInt(bufferedReader);
+        System.out.println("Chose the name of the player:\n");
+        String nameBR = null;
+        try {
+            nameBR = new BufferedReader(new InputStreamReader(System.in)).readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        switch (thePlayer) {
+            case 1:
+                playerOne = new Warrior(nameBR);
+                break;
+            case 2:
+                playerOne = new Assassin(nameBR);
+                break;
+            case 3:
+                playerOne = new Knight(nameBR);
+                break;
+            case 4:
+                playerOne = new Monk(nameBR);
+                break;
+            default:
+                playerOne = null;
+                break;
+        }
+        if (playerOne == null){
+            throw new IllegalArgumentException("You didn't choose type of player.");
+        }
+        return playerOne;
     }
 }
