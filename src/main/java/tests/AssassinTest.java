@@ -59,8 +59,9 @@ public class AssassinTest {
         assertTrue("The hero is dead.", !hero.isAlive());
     }
 
+    //Change this test if you have time to HeroTests.class
     @Test
-    public void testPercentageOfAttacking() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
+    public void testPercentageOfAttacking() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
         double theHundred;
         boolean flag = false;

@@ -17,16 +17,18 @@ public class GameEngine {
      * @param defencingHero Play Two
      */
     public void attack(Hero attackingHero, Hero defencingHero){
-        double damagePoints = attackingHero.attackingDamage();
-        defencingHero.damageReceived(damagePoints);
-        System.out.println("Player " + attackingHero.getName() + " attacked with " + String.format("%.2f",damagePoints) + " damage.\n" +
-                "Player " + defencingHero.getName() + " have : " +  String.format("%.2f",defencingHero.getHealthPoints()) + " health points.\n" +
-                "Player " + attackingHero.getName() + " have: " +  String.format("%.2f",attackingHero.getHealthPoints()) + " health points.\n");
+        if (defencingHero.isAlive() && attackingHero.isAlive()){
+            double damagePoints = attackingHero.attackingDamage();
+            defencingHero.damageReceived(damagePoints);
+            System.out.println("Player " + attackingHero.getName() + " attacked with " + String.format("%.2f",damagePoints) + " damage.\n" +
+                    "Player " + defencingHero.getName() + " have : " +  String.format("%.2f",defencingHero.getHealthPoints()) + " health points.\n" +
+                    "Player " + attackingHero.getName() + " have: " +  String.format("%.2f",attackingHero.getHealthPoints()) + " health points.\n");
 
-        if (defencingHero.isAlive()){
-          attack(defencingHero,attackingHero);
+            attack(defencingHero,attackingHero);
         } else {
-            if (defencingHero.getHealthPoints() > 0 ) {
+            if ((defencingHero.getHealthPoints() <= 0) && (attackingHero.getHealthPoints() <= 0)) {
+                System.out.println("The both heroes are dead.");
+            } else if (attackingHero.getHealthPoints() <= 0) {
                 System.out.println("The winner is : " + defencingHero.getName() + " the " + defencingHero.getClass().getSimpleName());
             } else {
                 System.out.println("The winner is : " + attackingHero.getName() + " the " + attackingHero.getClass().getSimpleName());
@@ -39,7 +41,6 @@ public class GameEngine {
      * Method for the starting of the game where the two players pick what type of hero they choose.
      * @throws IOException because the input value.
      */
-    // TODO: change the duplicate code.
     public void start() {
 
         Hero playerOne;
