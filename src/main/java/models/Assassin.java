@@ -33,9 +33,9 @@ public class Assassin extends Hero {
     @Override
     public double attackingDamage() {
         double chanceOfSkill = this.percentageOfAttacking(MIN_BOUNDER_PERCENTAGE, MAX_BOUNDER_PERCENTAGE) * 100;
-        if (chanceOfSkill < NUMBER_OF_PERCENTAGE_ATTACK ) {
+        if (chanceOfSkill <= NUMBER_OF_PERCENTAGE_ATTACK ) {
             return this.getAttackPoints() * 3;
         }
-        return this.getAttackPoints();
+        return this.getAttackPoints() * this.percentageOfAttacking(MIN_BOUNDER_PERCENTAGE_RAW_ATTACK, MAX_BOUNDER_PERCENTAGE_RAW_ATTACK) ;
     }
 }

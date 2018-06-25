@@ -56,7 +56,8 @@ public abstract class Hero {
      * @return The value of the damage in double.
      */
     public double attackingDamage(){
-        return this.getAttackPoints() * this.percentageOfAttacking(MIN_BOUNDER_PERCENTAGE_RAW_ATTACK, MAX_BOUNDER_PERCENTAGE_RAW_ATTACK);
+        return this.getAttackPoints() *
+                percentageOfAttacking(MIN_BOUNDER_PERCENTAGE_RAW_ATTACK, MAX_BOUNDER_PERCENTAGE_RAW_ATTACK);
     }
 
 
@@ -137,6 +138,9 @@ public abstract class Hero {
     }
 
     protected void setName(String name) {
+        if (name == null || name.equalsIgnoreCase("")) {
+            throw new IllegalArgumentException("The value of the name is not correct.");
+        }
         this.name = name;
     }
 }

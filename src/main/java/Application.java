@@ -1,4 +1,8 @@
 import engine.GameEngine;
+import models.Assassin;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import tests.AssassinTest;
 
 import java.io.IOException;
 
@@ -12,6 +16,7 @@ public class Application {
         GameEngine gameEngine = new GameEngine();
 
         gameEngine.start();
+
 
     }
 }
